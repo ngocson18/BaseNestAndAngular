@@ -20,15 +20,15 @@ export class CatsService {
     return this.catModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} cat`;
+  async findOne(id: string): Promise<Cat>  {
+    return this.catModel.findById({ "_id" : id }).exec();
   }
 
-  update(id: number, updateCatDto: UpdateCatDto) {
-    return `This action updates a #${id} cat`;
+  async update(id: string, updateCatDto: UpdateCatDto): Promise<any> {
+    return this.catModel.updateOne({ "_id" : id }, updateCatDto).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} cat`;
+  async remove(id: string): Promise<any> {
+    return this.catModel.deleteOne({"_id": id }).exec();
   }
 }

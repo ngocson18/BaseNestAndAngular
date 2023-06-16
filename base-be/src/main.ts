@@ -14,6 +14,10 @@ async function bootstrap() {
     .setTitle('Base Swagger')
     .setDescription('The base API description')
     .setVersion('1.0')
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'access_token',
+    )
     .build();
   const options: SwaggerDocumentOptions = {
     operationIdFactory: (controllerKey: string, methodKey: string) => methodKey,
