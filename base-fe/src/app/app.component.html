@@ -1,3 +1,42 @@
-<div class="text-3xl font-bold underline">
-  Hello world!
+<!-- <div class="text-center">
+  <div
+    class="rectangle"
+    [ngStyle]="style"
+    mwlResizable
+    [validateResize]="validate"
+    [enableGhostResize]="true"
+    [resizeSnapGrid]="{ left: 50, right: 50 }"
+    (resizeEnd)="onResizeEnd($event)"
+  >
+    <div
+      class="resize-handle-top"
+      mwlResizeHandle
+      [resizeEdges]="{ top: true }"
+    ></div>
+    <div
+      class="resize-handle-left"
+      mwlResizeHandle
+      [resizeEdges]="{ left: true }"
+    ></div>
+    <div
+      class="resize-handle-right"
+      mwlResizeHandle
+      [resizeEdges]="{ right: true }"
+    ></div>
+    <div
+      class="resize-handle-bottom"
+      mwlResizeHandle
+      [resizeEdges]="{ bottom: true }"
+    ></div>
+  </div>
+</div> -->
+
+<div class="flex flex-row justify-start border">
+  <div  mwlResizeHandle  [resizeEdges]="{right: true }">
+    <app-user mwlResizeHandle  [resizeEdges]="{ bottom: true }"></app-user>
+    <app-group mwlResizeHandle  [resizeEdges]="{ top: true }"></app-group>
+  </div>
+  <div mwlResizeHandle  [resizeEdges]="{ left: true }" class="border">
+    <app-content></app-content>
+  </div>
 </div>
