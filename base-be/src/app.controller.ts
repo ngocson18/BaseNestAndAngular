@@ -10,18 +10,18 @@ import { ApiTags } from '@nestjs/swagger';
 @Controller()
 export class AppController {
   constructor(
-    private authService: AuthService,
+    private readonly authService: AuthService,
   ) {}
 
-  @UseGuards(LocalAuthGuard)
   @Post('auth/login')
+  @UseGuards(LocalAuthGuard)
   async login(@Request() req) {
-    return this.authService.login(req.user);
+    return this.authService.generateToken(req.user);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  getProfile(@Request() req) {
+  async getProfile(@Request() req):Promise<any> {
     return req.user;
   }
 }

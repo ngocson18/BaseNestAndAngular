@@ -1,45 +1,45 @@
-import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
+import { Injectable, Inject } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
+import { User } from './entities/user.entity';
 import { UpdateUserDto } from './dto/update-user.dto';
-
-export type User = any;
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
-    },
-  ];
 
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  private users: any[] = [];
+
+  constructor(
+    @Inject('USER_MODEL')
+    private userModel: Model<User>
+  ) {}
+
+  async create(createUserDto: CreateUserDto): Promise<User> {
+    const createdUser = new this.userModel(createUserDto);
+    return createdUser.save();
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll(): Promise<User[]> {
+    this.users = await this.userModel.find().exec();
+    return this.userModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string): Promise<User | undefined> {
+    return this.userModel.findById({"_id": id}).exec();
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
-
-  async findOneByUserName(username: string): Promise<User | undefined> {
+  async login(username: string): Promise<User | undefined> {
+    await this.findAll();
+    console.log(this.users);
+    
     return this.users.find(user => user.username === username);
+  }
+
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<any> {
+    return this.userModel.updateOne({"_id": id}, updateUserDto).exec();
+  }
+
+  async remove(id: string) {
+    this.userModel.deleteOne({"_id": id}).exec();
   }
 }

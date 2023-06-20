@@ -1,16 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TodoModule } from './todo/todo.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
-// eslint-disable-next-line
 import { DatabaseModule } from './database/database.module';
-import { CatsModule } from './cats/cats.module';
 import { HealthModule } from './health/health.module';
+import { ConversationModule } from './conversation/conversation.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
-  imports: [TodoModule, UsersModule, AuthModule, DatabaseModule, CatsModule, HealthModule],
+  imports: [UsersModule, AuthModule, DatabaseModule, HealthModule, ConversationModule, MessagesModule],
   controllers: [AppController],
   providers: [AppService],
 })
