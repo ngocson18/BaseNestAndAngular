@@ -39,6 +39,25 @@ export class CreateUserDto {
   @ApiProperty({
     default: '',
     minimum: 1,
+    required: true
+  })
+  name: string;
+
+  @ApiProperty({
+    default: '',
+    required: false
+  })
+  lastestMessage: string;
+
+  @ApiProperty({
+    default: '',
+    required: false
+  })
+  listConversation: string[];
+
+  @ApiProperty({
+    default: '',
+    minimum: 1,
     required: false
   })
   avatar: string;

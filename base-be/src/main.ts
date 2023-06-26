@@ -16,7 +16,7 @@ async function bootstrap() {
     {
       snapshot: true,
       abortOnError: false,
-    }
+    },
   );
   const config = new DocumentBuilder()
     .setTitle('Base Swagger')
@@ -30,6 +30,7 @@ async function bootstrap() {
   const options: SwaggerDocumentOptions = {
     operationIdFactory: (controllerKey: string, methodKey: string) => methodKey,
   };
+  app.enableCors();
   const document = SwaggerModule.createDocument(app, config, options);
   SwaggerModule.setup('api', app, document);
   await app.listen(3000, '0.0.0.0');

@@ -4,7 +4,9 @@ export class User extends Document {
   readonly password: string;
   readonly email: string;
   readonly role: string;
+  readonly name: string;
+  readonly lastestMessage: string;
   readonly avatar: string;
+  readonly listConversation: string[];
   readonly created_at: Date;
-  
 }
