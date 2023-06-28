@@ -24,6 +24,11 @@ export class ConversationController {
     return this.conversationService.findOne(id);
   }
 
+  @Get('participant/:id')
+  findByUserId(@Param('id') id: string) {
+    return  this.conversationService.findConversationByUser(id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateConversationDto: UpdateConversationDto) {
     return this.conversationService.update(id, updateConversationDto);

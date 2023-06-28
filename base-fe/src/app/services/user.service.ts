@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { environment } from 'src/environments/environment';
 import { Observable, map } from 'rxjs';
-import { APIResponseModel } from '../models/api-response.model';
 import { UserModel } from '../models/user.model';
 
 @Injectable({

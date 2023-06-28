@@ -19,6 +19,11 @@ export class CreateConversationDto {
     required: false
   })
   created_at: Date;
+
+  @ApiProperty({ 
+    required: false
+  })
+  updated_at: Date;
 }
 
 export enum ConversationType {

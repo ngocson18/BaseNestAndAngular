@@ -10,6 +10,7 @@ import { ConversationModule } from './conversation/conversation.module';
 import { MessagesModule } from './messages/messages.module';
 import { CacheAppModule } from 'cache.module';
 import { DevtoolsModule } from '@nestjs/devtools-integration';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { DevtoolsModule } from '@nestjs/devtools-integration';
     ConversationModule,
     MessagesModule,
     CacheAppModule,
+    EventsModule,
     CacheModule.register(),
     DevtoolsModule.register({
       http: process.env.NODE_ENV !== 'production',

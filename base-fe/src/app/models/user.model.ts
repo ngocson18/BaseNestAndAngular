@@ -3,10 +3,10 @@ export interface UserModel {
     username:  string;
     password:  string;
     email: string;
+    name: string;
+    role: string;
+    avatar: string;
     created_at: null;
-    lastestMessage: string;
-    name: string,
-    __v: number,
-    listConversation: any[];
+    updated_at: null;
   }
   

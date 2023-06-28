@@ -5,9 +5,8 @@ export const UserSchema = new mongoose.Schema({
   password: String,
   email: String,
   name: String,
-  lastestMessage: String,
-  listConversation: Array,
   avatar: String,
   role: String,
-  created_at: Date
+  created_at: Date,
+  updated_at: Date,
 });

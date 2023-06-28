@@ -13,6 +13,10 @@ export const environment = {
       paths: {
         user: {
           list: 'users',
+        },
+        conversation: {
+          list: 'conversation',
+          listByUserId: 'conversation/participant',
         }
       }
     }

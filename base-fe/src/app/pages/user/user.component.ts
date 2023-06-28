@@ -12,7 +12,7 @@ export class UserComponent implements OnInit, OnDestroy {
   private _endSubjectObservable!: Subject<void>;
   public listUser: any[] = [];
   public userData!: UserModel;
-  public fakeUser = '648fc2bb0cf23b2c5597454d';
+  public fakeUser = '649bdad818f73d91d784eeca';
   constructor(
     private userService: UserService
   ) {
@@ -28,7 +28,7 @@ export class UserComponent implements OnInit, OnDestroy {
         takeUntil(this._endSubjectObservable),
         tap(res => {
           this.userData = res;
-          this.listUser = this.userData.listConversation;
+          // this.listUser = this.userData.listConversation;
           console.log(this.listUser);          
         })
       )

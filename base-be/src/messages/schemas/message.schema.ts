@@ -4,5 +4,6 @@ export const MessageSchema = new mongoose.Schema({
   conversation_id: String,
   sender_id: String,
   content: String,
-  timestamp: Date
+  created_at: Date,
+  updated_at: Date
 });

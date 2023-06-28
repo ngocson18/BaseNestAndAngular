@@ -2,12 +2,12 @@
     <div
         *ngFor="let user of listUser"
         class="flex flex-row justify-start items-center px-1 rounded-3xl hover:bg-slate-300 cursor-pointer">
-        <div>
+        <div class="min-w-[32px]">
             <img class="rounded-3xl w-8 h-8" [src]="user.avatar" alt="" />
         </div>
-        <div class="ml-4 flex flex-col">
-            <div class="text-base">{{ user.name }}</div>
-            <div class="text-sm">Lastest Message</div>
+        <div class="ml-4">
+            <div class="w-full text-base">{{ user.name }}</div>
+            <div class="w-full text-sm overflow-x-hidden whitespace-nowrap">{{ user.lastestMessage }}</div>
         </div>
     </div>
 </div>

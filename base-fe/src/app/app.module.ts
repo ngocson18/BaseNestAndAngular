@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { GroupComponent } from './pages/group/group.component';
 import { ContentComponent } from './pages/content/content.component';
 import { AngularSplitModule } from 'angular-split';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,13 @@ import { AngularSplitModule } from 'angular-split';
     RouterModule.forRoot([
       { path: '', component: AppComponent },
       // { path: '/', component: AppComponent },
-    ])
+    ]),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

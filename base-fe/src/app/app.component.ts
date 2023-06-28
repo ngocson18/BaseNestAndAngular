@@ -7,7 +7,7 @@ import { ResizeEvent } from 'angular-resizable-element';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'base-fe';
+  title = 'base-angular-16';
 
   public style: object = {};
   public style2: object = {};
